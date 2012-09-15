@@ -1,46 +1,45 @@
 from sqlalchemy.sql import update
+from model import table_name
 from meta import Session, engine
+from model import Network
 
 import networkx as nx
 from networkx.algorithms.centrality.betweenness import *
 
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import sys
 
-try:
-    #Session.close()
-    sql = 'ALTER TABLE topology ADD COLUMN bc_value_w double precision'
-    engine.execute(sql)
-except:
-    print 'Column bc_value_w exists already'
+class ComputeEdgeBC():
+    def __init__(self):
+        self.network = Network
 
-# Import model after column creation to be able to access bc_value_w
-try:
-    from model import RawNetwork
-except:
-    print 'No model RawNetwork'
-    sys.exit(1)
+        self.G = nx.Graph()
+        self.query = Session.query(self.network)
+        self.bc = self.ComputeCentralities(self.G,self.query)
 
-query = Session.query(RawNetwork)
+        self.UpdateTable(self.G,self.bc,self.network)
+    
+    def ComputeCentralities(self,G,query):
+        for res in query:
+            ed = res.compute_results(['id', 'fn_id', 'tn_id', 'length'])
+            G.add_edge(ed['fn_id'], ed['tn_id'], weight=ed['length'], eid=ed['id'])
+    
+        print 'Start computing bc values'
+        bc = edge_betweenness_centrality(G, True, 'weight')
+        print 'Done...'
+    
+        return bc
+    
+    def UpdateTable(self,G,bc,model):
+        print 'Start updating the table'
+        ## TODO Make a unique update statement 
+        for val in bc:
+            edge_id = G.get_edge_data(val[0],val[1])['eid']
+            u = update(model.__table__).where(model.id == edge_id).values(bc_value_w = bc[val])
+            u.execute()
+        print 'Table updated'
 
-g = nx.Graph()
-
-for res in query:
-     ed = res.compute_results(['id', 'fn_id', 'tn_id', 'length'])
-     g.add_edge(ed['fn_id'], ed['tn_id'], weight=ed['length'], eid=ed['id'])
-
-## Compute BC 
-centralities_b = edge_betweenness_centrality(g, True, 'weight')
-
-if Session.is_active == False:
-    Session.new()
-
-## TODO Make one unique update statement 
-for val in centralities_b:
-    edge_id = g.get_edge_data(val[0],val[1])['eid']
-    u = update(RawNetwork.__table__).where(RawNetwork.id == edge_id).values(bc_value_w = centralities_b[val])
-    u.execute()
-
+ComputeEdgeBC()
 #nx.draw(g)
 #plt.savefig("path.png")
 #draw_networkx_edges

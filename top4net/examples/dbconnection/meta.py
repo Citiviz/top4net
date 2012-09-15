@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 user = 'postgres'
 password = 'postgres'
 host = '127.0.0.1'
-database = 'topology'
+database = 'syria'
 
 address = 'postgresql://%s:%s@%s:5432/%s'%(user, password, host, database)
 

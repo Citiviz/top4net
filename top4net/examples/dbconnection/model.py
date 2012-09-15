@@ -11,7 +11,9 @@ from meta import engine, metadata
 
 #import matplotlib.pyplot as plt
 
-table_name = 'topology'
+table_name = 'syria_network_epsg32636_c_t4n'
+
+__all__ = ['table_name']
 
 Base = declarative_base(bind=engine)
 
@@ -27,8 +29,9 @@ class BaseObject(object):
                 results.update({prop: self.__getattribute__(prop)})
         return results
 
-class RawNetwork(Base, BaseObject):
+class Network(Base, BaseObject):
     __tablename__ = table_name
     __table_args__ = ({'schema': 'public', 'autoload': True})
     id = Column('gid', Integer, primary_key=True)
-    geom = GeometryColumn(Geometry)
+    the_geom = GeometryColumn(Geometry)
+    #bc_value_w = Column('bc_value_w', Float)
