@@ -1,10 +1,15 @@
-from sqlalchemy import Column
-from sqlalchemy.types import Integer, Text, String
+from sqlalchemy import Column, update
+from sqlalchemy.types import Integer, Text, String, Float
 from sqlalchemy.ext.declarative import declarative_base
 
 from geoalchemy import Geometry, WKBSpatialElement, GeometryColumn
 
-from meta import engine, Session
+from meta import engine, metadata
+
+#import networkx as nx
+#from networkx.algorithms.centrality.betweenness import *
+
+#import matplotlib.pyplot as plt
 
 table_name = 'topology'
 
@@ -26,10 +31,4 @@ class RawNetwork(Base, BaseObject):
     __tablename__ = table_name
     __table_args__ = ({'schema': 'public', 'autoload': True})
     id = Column('gid', Integer, primary_key=True)
-    the_geom = GeometryColumn(Geometry)
-
-query = Session.query(RawNetwork)
-query = query.limit(10)
-
-for res in query:
-    print res.compute_results(['id'])
+    geom = GeometryColumn(Geometry)

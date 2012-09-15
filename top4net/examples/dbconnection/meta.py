@@ -15,4 +15,4 @@ Session = scoped_session(sessionmaker())
 
 metadata = MetaData()
 
-__all__ = ['engine','Session']
+__all__ = ['engine','Session', 'metadata']
