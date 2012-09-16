@@ -6,12 +6,7 @@ from geoalchemy import Geometry, WKBSpatialElement, GeometryColumn
 
 from meta import engine, metadata
 
-#import networkx as nx
-#from networkx.algorithms.centrality.betweenness import *
-
-#import matplotlib.pyplot as plt
-
-table_name = 'syria_network_epsg32636_c_t4n'
+table_name = 'syria_nodes_utm36n_t4n'
 
 __all__ = ['table_name']
 
