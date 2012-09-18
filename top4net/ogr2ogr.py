@@ -18,4 +18,11 @@ def clip_shp_to_shp(directory, shpclippath, pref="", suf="_clip"):
 
 def shp_2_sql(path_to_shape, srs, table_name, path_to_sql):
     import subprocess
-    subprocess.call(["shp2pgsql", "-s", srs, path_to_shape, table_name, ">", path_to_sql]) 
+    #subprocess.call(["shp2pgsql", "-s", srs, path_to_shape, table_name, ">", path_to_sql])
+    subprocess.call(["sh", "-c", "shp2pgsql -s "+srs+" "+path_to_shape+" "+table_name+" > "+path_to_sql])
+
+def sql_2_postgresql():
+    import subprocess
+
+def reproject():
+    import subprocess
