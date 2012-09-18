@@ -1,4 +1,4 @@
-# clip_shp_to_shp.py
+# ogr2ogr.py
 import os
 import glob
 
@@ -11,7 +11,11 @@ def clip_shp_to_shp(directory, shpclippath, pref="", suf="_clip"):
         subprocess.call(["ogr2ogr", "-f", "ESRI Shapefile", "-clipsrc", shpclip, os.path.basename(source) + "_clip.shp", source])
 
 # set clipping shp path
-shpclip = "/home/thomas/git/python_scripts/clipping_area.shp"
+# shpclip = "/home/loic/clipping_area.shp"
 # set dir where searching shp to clip
-directory = os.getcwd()
-clip_shp_to_shp(directory, shpclip)
+# directory = os.getcwd()
+# clip_shp_to_shp(directory, shpclip)
+
+def shp_2_sql(path_to_shape, srs, table_name, path_to_sql):
+    import subprocess
+    subprocess.call(["shp2pgsql", "-s", srs, path_to_shape, table_name, ">", path_to_sql]) 
