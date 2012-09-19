@@ -8,7 +8,7 @@ def clip_shp_to_shp(directory, shpclippath, pref="", suf="_clip"):
     # call ogr2ogr to clip with shpclip var
     import subprocess
     for source in listResults:
-        subprocess.call(["ogr2ogr", "-f", "ESRI Shapefile", "-clipsrc", shpclip, os.path.basename(source) + "_clip.shp", source])
+        subprocess.call(["ogr2ogr", "-f", "ESRI Shapefile", "-clipsrc", shpclippath, os.path.basename(source) + "_clip.shp", source])
 
 # set clipping shp path
 # shpclip = "/home/loic/clipping_area.shp"
