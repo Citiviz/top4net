@@ -16,9 +16,18 @@ def clip_shp_to_shp(directory, shpclippath, pref="", suf="_clip"):
 # directory = os.getcwd()
 # clip_shp_to_shp(directory, shpclip)
 
-def shp_2_sql(path_2_shape, srs, table_name, path_2_sql):
+# TODO Test Encoding
+def shp_2_sql(path_2_shape, srs, table_name, path_2_sql, encoding='LATIN1'):
     import subprocess
-    subprocess.call(["sh", "-c", "shp2pgsql -s "+srs+" "+path_2_shape+" "+table_name+" > "+path_2_sql])
+    try:
+        subprocess.call(["sh", "-c", "shp2pgsql -s "+srs+" "+"-W"+" "+encoding+" "+path_2_shape+" "+table_name+" > "+path_2_sql])
+    except:
+        encoding = 'UTF-8'
+        try:
+            subprocess.call(["sh", "-c", "shp2pgsql -s "+srs+" "+"-W"+" "+encoding+" "+path_2_shape+" "+table_name+" > "+path_2_sql])
+        except:
+            print 'An error occured during the conversion of the shapefile to sql'
+            sys.exit(1)
 
 def sql_2_postgresql(database, path_2_sql, user='postgres', host='localhost'):
     from subprocess import Popen, PIPE
