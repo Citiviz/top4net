@@ -40,4 +40,4 @@ def reproject(s_srs, t_srs, path2_s_shp, path2_t_shp):
     import subprocess
     s_srs = "EPSG:"+s_srs
     t_srs = "EPSG:"+t_srs
-    subprocess.call(["ogr2ogr","-t_srs", s_srs, "-a_srs", t_srs, "-f", "ESRI Shapefile", path2_t_shp, path2_s_shp])
+    subprocess.call(["ogr2ogr","-s_srs", s_srs, "-t_srs", t_srs, "-a_srs", t_srs, "-f", "ESRI Shapefile", path2_t_shp, path2_s_shp])
