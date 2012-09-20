@@ -1,13 +1,16 @@
 from meta import engine
-from model import table_name
+from model import table_name, table_name_node
 
-def AddColumnBC():
+column_name = 'bc_value'
+
+def AddColumn(table_name, column_name):
     try:
-        sql = 'ALTER TABLE %s ADD COLUMN bc_value_w double precision' %(table_name)
+        sql = 'ALTER TABLE %s ADD COLUMN %s double precision' %(table_name, column_name)
         engine.execute(sql)
-        print 'Column bc_value_w has been created'
+        print 'Column %s has been created' %i(column_name)
         # Pause code before loading the model
     except:
-        print 'Column bc_value_w exists already'
+        print 'Column %s exists already' %(column_name)
 
-AddColumnBC()
+# AddColumn(table_name, column_name)
+AddColumn(table_name_node, column_name)
