@@ -1,0 +1,45 @@
+﻿    CREATE OR REPLACE FUNCTION snap_point_to_line(points_table character varying, line_table character varying, tolerance double precision)
+      RETURNS boolean AS
+    $BODY$
+    DECLARE         
+            srid integer;
+            i integer;
+
+            row record;
+            row_1 record;
+            closest_distance double precision;
+
+            query varchar;
+            snapped_point geometry;
+    BEGIN
+
+      --Get the srid of the points table
+        FOR row IN EXECUTE 'select getsrid(the_geom) as srid from '||points_table||' where gid = (select min(gid) from '||points_table||')' LOOP
+        END LOOP;
+        srid := row.srid;
+
+
+     -- Add a column in which it will store the closest nodes from the line
+     FOR row IN EXECUTE 'SELECT the_geom FROM '||points_table LOOP
+
+        query := 'SELECT ST_Transform(the_geom,'||srid||') as the_geom, ST_Distance(GeometryFromText('''||ST_AsText(row.the_geom)||''','||srid||'), ST_Transform(the_geom,'||srid||')) as distance FROM ' ||line_table||' ORDER BY ST_Distance(GeometryFromText('''||ST_AsText(row.the_geom)||''','||srid||'), ST_Transform(the_geom,'||srid||'))  LIMIT 1';
+        RAISE NOTICE '%',query; 
+        FOR row_1 IN EXECUTE query LOOP
+            closest_distance := row_1.distance;
+
+            --If below the distance threeshold, then snap the point
+            IF closest_distance < tolerance THEN
+                snapped_point := ST_line_interpolate_point(ST_LineMerge(row_1.the_geom),ST_line_locate_point(ST_LineMerge(row_1.the_geom), row.the_geom));
+
+                --UPDATE the_geometry
+                EXECUTE 'UPDATE '||points_table||' SET the_geom = GeometryFromText('''||ST_AsText(snapped_point)||''','||srid||') WHERE ST_AsText(the_geom) = '''||ST_AsText(row.the_geom)||'''';
+
+            END IF;
+END LOOP;   
+    END LOOP;
+    RETURN true;
+    END;
+   $BODY$
+    LANGUAGE 'plpgsql' VOLATILE STRICT
+    COST 100;
+    ALTER FUNCTION snap_point_to_line(character varying, character varying, double precision) OWNER TO postgres;

@@ -1,0 +1,8 @@
+﻿UPDATE yverdon a 
+  SET from_node = b.gid
+  FROM nodes_expanded b
+  WHERE a.gid = b.road_leaving;
+UPDATE yverdon a 
+  SET to_node = b.gid
+  FROM nodes_expanded b
+  WHERE a.gid = b.road_entering;

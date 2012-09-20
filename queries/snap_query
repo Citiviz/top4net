@@ -1,0 +1,30 @@
+﻿select yverdon.gid, yverdon.geom, final.startpoint, final.endpoint
+from
+(select dist.st_distance, dist.gid, dist.startpoint, dist.endpoint
+from
+(select ST_Distance(fntn.startpoint,fntn.endpoint), fntn.gid, startpoint, endpoint 
+from
+(select geom, startpoint(geom), endpoint(geom), gid from yverdon
+) as fntn
+) as dist
+where dist.st_distance != 0 and dist.st_distance < 2
+) as final, yverdon
+where yverdon.geom && ST_SetSRID(
+    ST_MakeBox2D(
+        St_Point(
+            st_x(final.startpoint) - 2, st_y(final.startpoint) - 2
+        ),
+        St_Point(
+            st_x(final.startpoint) + 2, st_y(final.startpoint) + 2
+        )
+    )
+,21781) or yverdon.geom && ST_SetSRID(
+    ST_MakeBox2D(
+        St_Point(
+            st_x(final.endpoint) - 2, st_y(final.endpoint) - 2
+        ),
+        St_Point(
+            st_x(final.endpoint) + 2, st_y(final.endpoint) + 2
+        )
+    )
+,21781)

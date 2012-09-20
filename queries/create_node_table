@@ -1,0 +1,25 @@
+﻿CREATE TABLE yverdon_nodes AS
+SELECT 
+	geom,
+	array_accum(road_leaving) AS road_leaving,
+	array_accum(road_entering) AS road_entering
+FROM (
+  SELECT 
+    ST_StartPoint(geom) AS geom, 
+    gid AS road_leaving,
+    NULL::integer AS road_entering
+  FROM yverdon
+  UNION ALL
+  SELECT 
+    ST_EndPoint(geom) AS geom, 
+    NULL::integer AS road_leaving,
+    gid AS road_entering
+  FROM yverdon
+) AS foo
+GROUP BY geom;
+
+ALTER TABLE yverdon_nodes ADD COLUMN gid serial;
+ALTER TABLE yverdon_nodes ADD PRIMARY KEY (gid);
+
+ALTER TABLE yverdon ADD from_node integer;
+ALTER TABLE yverdon ADD to_node integer;

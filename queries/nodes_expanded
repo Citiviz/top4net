@@ -1,0 +1,18 @@
+﻿CREATE TABLE nodes_expanded AS 
+SELECT 
+  gid, 
+  road_leaving[leaving_upper], 
+  road_entering[entering_upper]
+FROM (
+  SELECT 
+    gid, 
+    road_leaving, 
+    generate_series(1, array_upper(road_leaving, 1)) AS leaving_upper,
+    road_entering, 
+    generate_series(1, array_upper(road_entering, 1)) AS entering_upper
+  FROM yverdon_nodes
+) AS foo;
+
+CREATE UNIQUE INDEX nodes_expanded_leav_idx ON nodes_expanded (road_leaving);
+CREATE UNIQUE INDEX nodes_expanded_ent_idx ON nodes_expanded (road_entering);
+ANALYZE nodes_expanded;
