@@ -1,0 +1,26 @@
+-- Create a very simple graphe to test correction queries 
+SET CLIENT_ENCODING TO UTF8;                                                                                                                                                                                                     
+SET STANDARD_CONFORMING_STRINGS TO ON;                                                                                                                                                                                           
+BEGIN;                                                                                                                                                                                                                           
+CREATE TABLE "unitary" (gid serial,"id" numeric(10,0));
+ALTER TABLE "unitary" ADD PRIMARY KEY (gid);
+SELECT AddGeometryColumn('','unitary','geom','21781','LINESTRING',2);
+INSERT INTO "unitary" ("id",geom) VALUES ('1',st_geometryfromtext('LINESTRING(0 0, 0 1)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('2',st_geometryfromtext('LINESTRING(0 1, 0 2)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('3',st_geometryfromtext('LINESTRING(0 2, 0 3)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('4',st_geometryfromtext('LINESTRING(1 0, 1 1)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('5',st_geometryfromtext('LINESTRING(1 1, 1 2.25)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('6',st_geometryfromtext('LINESTRING(2 0, 2 1)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('7',st_geometryfromtext('LINESTRING(2 1, 2 3)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('8',st_geometryfromtext('LINESTRING(3 0, 3 1)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('9',st_geometryfromtext('LINESTRING(3 1, 3 2)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('10',st_geometryfromtext('LINESTRING(3 2, 3 3)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('11',st_geometryfromtext('LINESTRING(0 0, 1 0)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('12',st_geometryfromtext('LINESTRING(1 0, 2 0)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('13',st_geometryfromtext('LINESTRING(2 0, 3 0)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('14',st_geometryfromtext('LINESTRING(0 1, 1 1)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('15',st_geometryfromtext('LINESTRING(1 1, 2 1)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('16',st_geometryfromtext('LINESTRING(0 2, 3 2)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('17',st_geometryfromtext('LINESTRING(0 3, 2 3)',21781));
+INSERT INTO "unitary" ("id",geom) VALUES ('18',st_geometryfromtext('LINESTRING(2 3, 3 3)',21781));
+COMMIT;
