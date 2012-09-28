@@ -6,8 +6,9 @@ from geoalchemy import Geometry, WKBSpatialElement, GeometryColumn
 
 from meta import engine, metadata
 
-table_name = 'syria_network_epsg32636_c_t4n'
-table_name_node = 'syria_nodes_epsg32636_c_t4n'
+schema = 'topoyverdon'
+table_name = 'edge_data'
+table_name_node = 'node'
 
 __all__ = ['table_name']
 
@@ -25,15 +26,14 @@ class BaseObject(object):
                 results.update({prop: self.__getattribute__(prop)})
         return results
 
-class Network(Base, BaseObject):
+class Edge_data(Base, BaseObject):
     __tablename__ = table_name
-    __table_args__ = ({'schema': 'public', 'autoload': True})
-    id = Column('gid', Integer, primary_key=True)
-    the_geom = GeometryColumn(Geometry)
-    #bc_value_w = Column('bc_value_w', Float)
+    __table_args__ = ({'schema': schema, 'autoload': True})
+    edge_id = Column('edge_id', Integer, primary_key=True)
+    geom = GeometryColumn(Geometry)
 
-"""class Node(Base, BaseObject):
+'''class Node(Base, BaseObject):
     __tablename__ = table_name_node
-    __table_args__ = ({'schema': 'public', 'autoload': True})
-    id = Column('gid', Integer, primary_key=True)
-    the_geom = GeometryColumn(Geometry)"""
+    __table_args__ = ({'schema': schema, 'autoload': True})
+    node_id = Column('node_id', Integer, primary_key=True)
+    geom = GeometryColumn(Geometry)'''
