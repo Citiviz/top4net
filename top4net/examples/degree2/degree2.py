@@ -33,13 +33,13 @@ class RemoveDegree2:
         #logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
 
         # --- By networkx ---
-        self.G = nx.Graph()
-        self.network = Edge_data
-        self.query = Session.query(self.network)
-        start = time.time()
-        self.edge2 = list(self.getEdgesDegree2ByNx())
-        print 'All edges with nodes of degree 2 by networkx: %d results in %f millisec' %(len(self.edge2), time.time() - start)
-        Session.close()
+        #self.G = nx.Graph()
+        #self.network = Edge_data
+        #self.query = Session.query(self.network)
+        #start = time.time()
+        #self.edge2 = list(self.getEdgesDegree2ByNx())
+        #print 'All edges with nodes of degree 2 by networkx: %d results in %f millisec' %(len(self.edge2), time.time() - start)
+        #Session.close()
 
         # --- By postgis ---
         start = time.time()
@@ -47,9 +47,9 @@ class RemoveDegree2:
         print 'All edges with nodes of degree 2 by postgis: %d results in %f millisec' %(len(self.edge2), time.time() - start)
 
         # --- Heal ---
-        #start = time.time()
-        #self.healEdges()
-        #print 'Heal edges in %f millisec' %(time.time() - start)
+        start = time.time()
+        self.healEdges()
+        print 'Heal edges in %f millisec' %(time.time() - start)
 
     def getEdgesDegree2ByNx(self):
         for res in self.query:
@@ -74,7 +74,6 @@ class RemoveDegree2:
     def healEdges(self):
         rmEdges = {}
         connection = engine.connect()
-        trans = connection.begin()
         try:
             for ed0, ed1 in self.edge2:
                 if ed0 in rmEdges:
@@ -82,10 +81,12 @@ class RemoveDegree2:
                 if ed1 in rmEdges:
                     ed1 = rmEdges[ed1]
                 sql = "select topology.ST_NewEdgeHeal('%s', %s, %s)" %('topoyverdon', ed0, ed1)
+                trans = connection.begin()
                 newEdgeId = connection.execute(sql).scalar()
+                trans.commit()
                 rmEdges[ed0] = newEdgeId
                 rmEdges[ed1] = newEdgeId
-            trans.commit()
+            print '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
         except:
             print rmEdges
             trans.rollback()

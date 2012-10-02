@@ -20,9 +20,14 @@ def install():
     print ' >>> Populate: %f [ms]' %(time.time() - start)
 
     topo = Topology()
+
     start = time.time()
     topo.create()
     print ' >>> Create topology: %f [ms]' %(time.time() - start)
+
+    start = time.time()
+    topo.cleanDegree2Nodes()
+    print ' >>> Clean nodes with degree 2: %f [ms]' %(time.time() - start)
 
 
 
