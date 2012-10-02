@@ -41,3 +41,14 @@ def reproject(s_srs, t_srs, path2_s_shp, path2_t_shp):
     s_srs = "EPSG:"+s_srs
     t_srs = "EPSG:"+t_srs
     subprocess.call(["ogr2ogr","-s_srs", s_srs, "-t_srs", t_srs, "-a_srs", t_srs, "-f", "ESRI Shapefile", path2_t_shp, path2_s_shp])
+
+def populate(shp='default', s_srs='4326', t_srs='21781', db='yverdon'):
+    if shp == 'default':
+        shp = os.path.join(os.path.dirname(__file__), '..', 'data', 'yverdon', 'roads.shp')
+    import re
+    sub = re.sub(r'.shp$', '_'+t_srs, shp)
+    reproj = sub+'.shp'
+    sql = sub+'.sql'
+    reproject(s_srs, t_srs, shp, reproj)
+    shp_2_sql(reproj, t_srs, db, sql)
+    sql_2_postgresql(db, sql)

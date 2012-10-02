@@ -1,0 +1,119 @@
+Memory used for node coordinates storage (approximate):
+  for positive IDs: 227 MiB
+  for negative IDs: 0 MiB
+error building way geometry for way 20868724: must at least contain two nodes
+Ignoring illegal geometry for way 20868724.
+warning building way geometry for way 22704014: contains position (6.63611,46.7851) twice
+error building way geometry for way 22736260: must at least contain two nodes
+Ignoring illegal geometry for way 22736260.
+error building way geometry for way 25872044: must at least contain two nodes
+Ignoring illegal geometry for way 25872044.
+Ignoring illegal geometry for way 25874817.
+error building way geometry for way 26533101: must at least contain two nodes
+Ignoring illegal geometry for way 26533101.
+error building way geometry for way 27197256: must at least contain two nodes
+Ignoring illegal geometry for way 27197256.
+error building way geometry for way 27208922: must at least contain two nodes
+Ignoring illegal geometry for way 27208922.
+error building way geometry for way 28497456: must at least contain two nodes
+Ignoring illegal geometry for way 28497456.
+error building way geometry for way 28551187: must at least contain two nodes
+Ignoring illegal geometry for way 28551187.
+error building way geometry for way 36828251: must at least contain two nodes
+Ignoring illegal geometry for way 36828251.
+warning building way geometry for way 40866458: contains position (6.63481,46.787) twice
+error building way geometry for way 54638465: must at least contain two nodes
+Ignoring illegal geometry for way 54638465.
+Ignoring illegal geometry for way 71165726.
+warning building way geometry for way 79756629: contains position (6.64127,46.7832) twice
+warning building way geometry for way 79811350: contains position (6.63235,46.783) twice
+warning building way geometry for way 79813620: contains position (6.65789,46.7779) twice
+warning building way geometry for way 79813620: contains position (6.65787,46.7779) twice
+warning building way geometry for way 79825074: contains position (6.65206,46.7762) twice
+warning building way geometry for way 80281267: contains position (6.62843,46.7839) twice
+warning building way geometry for way 80415091: contains position (6.64526,46.7773) twice
+warning building way geometry for way 81125114: contains position (6.63637,46.7846) twice
+warning building way geometry for way 81127169: contains position (6.63586,46.787) twice
+error building way geometry for way 81539911: must at least contain two nodes
+Ignoring illegal geometry for way 81539911.
+error building way geometry for way 81547464: must at least contain two nodes
+Ignoring illegal geometry for way 81547464.
+warning building way geometry for way 81640525: contains position (6.6485,46.771) twice
+warning building way geometry for way 81647209: contains position (6.60781,46.7966) twice
+Ignoring illegal geometry for way 81713992.
+warning building way geometry for way 81950467: contains position (6.64897,46.7687) twice
+warning building way geometry for way 81971164: contains position (6.65158,46.7728) twice
+warning building way geometry for way 82307634: contains position (6.64901,46.7841) twice
+warning building way geometry for way 82311126: contains position (6.65206,46.7762) twice
+warning building way geometry for way 82312548: contains position (6.65219,46.7758) twice
+warning building way geometry for way 82436037: contains position (6.64119,46.779) twice
+warning building way geometry for way 83345253: contains position (6.64088,46.7766) twice
+warning building way geometry for way 85318746: contains position (6.65891,46.777) twice
+warning building way geometry for way 91787041: contains position (6.65923,46.7727) twice
+warning building way geometry for way 91787056: contains position (6.65901,46.7724) twice
+warning building way geometry for way 91787563: contains position (6.65914,46.7722) twice
+warning building way geometry for way 91787565: contains position (6.65915,46.7722) twice
+warning building way geometry for way 91789180: contains position (6.66073,46.7735) twice
+warning building way geometry for way 91790705: contains position (6.6602,46.7752) twice
+warning building way geometry for way 91939234: contains position (6.6649,46.776) twice
+warning building way geometry for way 91942261: contains position (6.66418,46.7774) twice
+warning building way geometry for way 91942329: contains position (6.66403,46.7772) twice
+error building way geometry for way 107742129: must at least contain two nodes
+Ignoring illegal geometry for way 107742129.
+warning building way geometry for way 117617743: contains position (6.66398,46.761) twice
+error building way geometry for way 117617744: must at least contain two nodes
+Ignoring illegal geometry for way 117617744.
+warning building way geometry for way 117617754: contains position (6.66455,46.7601) twice
+warning building way geometry for way 117623865: contains position (6.66521,46.7614) twice
+warning building way geometry for way 117623869: contains position (6.66541,46.7616) twice
+warning building way geometry for way 117623872: contains position (6.66482,46.761) twice
+warning building way geometry for way 117675318: contains position (6.66748,46.7625) twice
+Ignoring illegal geometry for way 117778731.
+warning building way geometry for way 117806958: contains position (6.6686,46.7601) twice
+warning building way geometry for way 117806966: contains node 1326268741 twice
+error building way geometry for way 117806966: must at least contain two different points
+Ignoring illegal geometry for way 117806966.
+error building way geometry for way 117806974: must at least contain two nodes
+Ignoring illegal geometry for way 117806974.
+warning building way geometry for way 118291550: contains position (6.66748,46.7625) twice
+warning building way geometry for way 119211357: contains position (6.66618,46.7599) twice
+warning building way geometry for way 119212723: contains position (6.67064,46.7599) twice
+Ignoring illegal geometry for way 119213241.
+Ignoring illegal geometry for way 119213243.
+Ignoring illegal geometry for way 119214547.
+error building way geometry for way 119371725: must at least contain two nodes
+Ignoring illegal geometry for way 119371725.
+warning building way geometry for way 120555830: contains position (6.65146,46.766) twice
+Ignoring illegal geometry for way 121480713.
+Ignoring illegal geometry for way 121480724.
+Ignoring illegal geometry for way 121511274.
+warning building way geometry for way 121512378: contains position (6.6054,46.7766) twice
+warning building way geometry for way 121512378: contains position (6.60578,46.7768) twice
+warning building way geometry for way 121672607: contains position (6.60899,46.7792) twice
+warning building way geometry for way 121716188: contains position (6.60899,46.7792) twice
+Ignoring illegal geometry for way 121716781.
+warning building way geometry for way 121808458: contains position (6.60976,46.7782) twice
+warning building way geometry for way 122113046: contains position (6.6076,46.7784) twice
+Ignoring illegal geometry for way 122229355.
+Ignoring illegal geometry for way 122229358.
+Ignoring illegal geometry for way 122233207.
+Ignoring illegal geometry for way 122233223.
+Ignoring illegal geometry for way 122266884.
+Ignoring illegal geometry for way 122270970.
+Ignoring illegal geometry for way 122353950.
+warning building way geometry for way 130858681: contains position (6.63928,46.773) twice
+warning building way geometry for way 131007004: contains position (6.63887,46.7738) twice
+warning building way geometry for way 131385852: contains position (6.64265,46.7714) twice
+warning building way geometry for way 136988989: contains position (6.63671,46.7747) twice
+warning building way geometry for way 137978759: contains position (6.63681,46.7673) twice
+warning building way geometry for way 148329037: contains position (6.66452,46.7733) twice
+warning building way geometry for way 148329037: contains position (6.6646,46.7733) twice
+Ignoring illegal geometry for way 157499701.
+Ignoring illegal geometry for way 157499721.
+Ignoring illegal geometry for way 157499774.
+error building way geometry for way 157499784: must at least contain two nodes
+Ignoring illegal geometry for way 157499784.
+warning building way geometry for way 158852044: contains position (6.63982,46.7876) twice
+warning building way geometry for way 158852046: contains position (6.64044,46.7881) twice
+warning building way geometry for way 159340581: contains position (6.64547,46.7685) twice
+warning building way geometry for way 167161566: contains position (6.67614,46.7683) twice
