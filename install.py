@@ -14,12 +14,11 @@ def install():
 
         Try to run with these previous data already created will fail.
     '''
+    topo = Topology()
 
     start = time.time()
     populate()
     print ' >>> Populate: %f [ms]' %(time.time() - start)
-
-    topo = Topology()
 
     start = time.time()
     topo.create()

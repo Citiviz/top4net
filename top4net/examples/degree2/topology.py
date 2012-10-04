@@ -33,27 +33,32 @@ class Topology:
         conn.execute(geosql)
         trans.commit()
 
-
-    def cleanDegree2Nodes(self)
-        # getEdgesDegree2ByPostgis
+    # getEdgesDegree2ByPostgis
+    def getEdgesDegree2(self):
         nodes = engine.execute("select node_id from topoyverdon.node")
-        edge2 = for n in nodes:
+        for n in nodes:
             nid = n.items()[0][1]
             edges = list(engine.execute("select topology.GetNodeEdges('topoyverdon', %d)" %nid))
             degree = len(edges)
             if degree == 2:
                 yield (re.search(r'\(\d,-?(\d+)\)', edges[0][0]).group(1), re.search(r'\(\d,-?(\d+)\)', edges[1][0]).group(1))
 
+    def cleanDegree2Nodes(self):
+
+        edge2 = list(self.getEdgesDegree2())
+        if len(edge2) == 0:
+            print 'No nodes degree 2'
+
         # healEdges
         rmEdges = {}
         connection = engine.connect()
         try:
-            for ed0, ed1 in list(edge2):
-                if ed0 in rmEdges:
+            for ed0, ed1 in edge2:
+                while ed0 in rmEdges:
                     ed0 = rmEdges[ed0]
-                if ed1 in rmEdges:
+                while ed1 in rmEdges:
                     ed1 = rmEdges[ed1]
-                sql = "select topology.ST_NewEdgeHeal('%s', %s, %s)" %('topoyverdon', ed0, ed1)
+                sql = "select topology.ST_NewEdgeHeal_xxx('%s', %s, %s)" %('topoyverdon', ed0, ed1)
                 trans = connection.begin()
                 newEdgeId = connection.execute(sql).scalar()
                 trans.commit()
