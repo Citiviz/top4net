@@ -1,0 +1,34 @@
+Memory used for node coordinates storage (approximate):
+  for positive IDs: 234 MiB
+  for negative IDs: 0 MiB
+error building way geometry for way 30623673: must at least contain two nodes
+Ignoring illegal geometry for way 30623673.
+error building way geometry for way 33140098: must at least contain two nodes
+Ignoring illegal geometry for way 33140098.
+error building way geometry for way 33582024: must at least contain two nodes
+Ignoring illegal geometry for way 33582024.
+error building way geometry for way 33582033: must at least contain two nodes
+Ignoring illegal geometry for way 33582033.
+error building way geometry for way 33582057: must at least contain two nodes
+Ignoring illegal geometry for way 33582057.
+error building way geometry for way 97211329: must at least contain two nodes
+Ignoring illegal geometry for way 97211329.
+error building way geometry for way 97211394: must at least contain two nodes
+Ignoring illegal geometry for way 97211394.
+Ignoring illegal geometry for way 97389410.
+Ignoring illegal geometry for way 97389445.
+Ignoring illegal geometry for way 97672805.
+Ignoring illegal geometry for way 97672811.
+Ignoring illegal geometry for way 97672843.
+error building way geometry for way 97672844: must at least contain two nodes
+Ignoring illegal geometry for way 97672844.
+Ignoring illegal geometry for way 97703047.
+Ignoring illegal geometry for way 97703061.
+Ignoring illegal geometry for way 97703083.
+Ignoring illegal geometry for way 97936581.
+error building way geometry for way 104979338: must at least contain two nodes
+Ignoring illegal geometry for way 104979338.
+error building way geometry for way 136543106: must at least contain two nodes
+Ignoring illegal geometry for way 136543106.
+error building way geometry for way 136543110: must at least contain two nodes
+Ignoring illegal geometry for way 136543110.
