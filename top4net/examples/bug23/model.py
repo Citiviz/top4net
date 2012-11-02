@@ -8,7 +8,6 @@ from meta import engine, metadata
 
 schema = 'yverdon'
 table_name = 'edge_data'
-#table_name_node = 'node'
 
 __all__ = ['table_name']
 
@@ -31,9 +30,3 @@ class Edge_data(Base, BaseObject):
     __table_args__ = ({'schema': schema, 'autoload': True})
     edge_id = Column('edge_id', Integer, primary_key=True)
     geom = GeometryColumn(Geometry)
-
-#class Node(Base, BaseObject):
-    #__tablename__ = table_name_node
-    #__table_args__ = ({'schema': schema, 'autoload': True})
-    #node_id = Column('node_id', Integer, primary_key=True)
-    #geom = GeometryColumn(Geometry)
