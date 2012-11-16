@@ -47,8 +47,11 @@ def populate(shp='default', s_srs='4326', t_srs='21781', db='yverdon'):
         shp = os.path.join(os.path.dirname(__file__), '..', 'data', 'yverdon', 'roads.shp')
     import re
     sub = re.sub(r'.shp$', '_'+t_srs, shp)
-    reproj = sub+'.shp'
     sql = sub+'.sql'
-    reproject(s_srs, t_srs, shp, reproj)
-    shp_2_sql(reproj, t_srs, db, sql)
-    sql_2_postgresql(db, sql)
+    if s_srs != t_srs:
+        reproj = sub+'.shp'
+        reproject(s_srs, t_srs, shp, reproj)
+        shp_2_sql(reproj, t_srs, db, sql)
+    else:
+        shp_2_sql(shp, t_srs, db, sql)
+        sql_2_postgresql(db, sql)
